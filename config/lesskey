@@ -1,1 +1,10 @@
-/home/syed/.lesskey
+# ~/.lesskey
+
+k         forw-line
+n         forw-line
+e         back-line
+j         repeat-search
+N forw-line-force
+E back-line-force
+J reverse-search
+K examine

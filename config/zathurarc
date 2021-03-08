@@ -1,1 +1,40 @@
-/home/syed/.config/zathura/zathurarc
+set sandbox none
+set font "inconsolata normal 18"
+
+unmap k
+unmap l
+unmap J
+unmap K
+map n scroll down
+map e scroll up
+map i scroll right
+map N navigate next
+map E navigate previous
+
+map j search next
+map J search previous
+
+map Space scroll -50
+
+map > rotate rotate-cw
+map < rotate rotate-ccw
+
+set default-bg "#eeeeee"
+set default-fg "white"
+
+set inputbar-bg "#223"
+set inputbar-fg "white"
+
+set statusbar-bg "#223"
+set statusbar-fg "white"
+
+set completion-bg "#223"
+set completion-fg white
+
+set completion-highlight-bg white
+set completion-highlight-bg #223
+
+set completion-group-bg #112
+set completion-group-fg white
+
+set guioptions "svh"
