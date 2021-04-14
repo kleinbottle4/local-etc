@@ -14,7 +14,8 @@ map E navigate previous
 map j search next
 map J search previous
 
-map Space scroll -50
+map b scroll half-up
+map f scroll half-down
 
 map > rotate rotate-cw
 map < rotate rotate-ccw

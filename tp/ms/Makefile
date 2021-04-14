@@ -9,7 +9,7 @@ main.ps: main.ms
 pdf : main.ms
 	$(pdf_cmd)
 
-view: main.ms
+view: main.ps
 	$(psv) main.ps
 
 loop:

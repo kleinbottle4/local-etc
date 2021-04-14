@@ -2,13 +2,12 @@
 alias ac="apt-cache"
 alias acs="apt-cache show"
 alias sau="sudo apt update && sudo apt upgrade"
-alias br="brightnessctl set"
 alias cdbin="cd ~/.local/bin"
 alias cdetc="cd ~/.local/etc"
 alias chr="chromium"
-alias co="setxkbmap gb -variant colemak"
 alias cpi="cp -i"
 alias e="emacs -Q"
+alias ue="uemacs"
 alias em='emacs'
 alias ev="evince"
 alias fir="firefox"
@@ -17,9 +16,10 @@ alias log="sc log.sc"
 alias m="mutt"
 alias mangcc="w3m https://linux.die.net/man/1/gcc"
 alias md="markdown"
-alias n="nnn -il"
+alias n="nnn -i"
 alias p="python3"
 alias sai="sudo apt install"
+alias sain="sudo apt install --no-install-recommends"
 alias shu="systemctl poweroff"
 alias sk="screenkey --key-mode raw -f Inconsolata"
 alias sus="systemctl suspend"
@@ -28,6 +28,7 @@ alias ta="tmux attach"
 alias up="sudo apt update && sudo apt upgrade"
 alias v=e3vi
 alias w3m="w3m -B"
+alias w3mp="w3m -T text/html"
 alias wg="wordgrinder"
 alias z="zathura"
 PATH="${PATH#/usr/local/plan9/bin:}"
@@ -54,7 +55,7 @@ s ()
 alias sii="s ii"
 
 # Bash misc.
-alias h="history"
+alias hi="history"
 alias j="jobs -l"
 alias pu="pushd"
 alias po="popd"
@@ -63,7 +64,7 @@ alias r="reset"
 alias mvi="mv -i"
 alias rmi="rm -i"
 alias crank="9sed '1h;1d;$G'"
-alias ba="vim ~/.bash_aliases"
+alias ba="v ~/.bash_aliases"
 alias bu=". ~/.profile"
 alias to="vim ~/dc/md/t.md"
 
@@ -74,12 +75,12 @@ run ()
 }
 
 # German
-de ()
+dec ()
 {
 	w3m "www.collinsdictionary.com/search/?dictCode=english-german&q=$(printf '%s' $@)"
 }
 
-d ()
+de ()
 {
 	w3m "www.collinsdictionary.com/search/?dictCode=english-german&q=$(printf\
 	'%s' $@)" | grep -E '(noun|adjective|verb)' -B 5 -A 100 | less
@@ -92,7 +93,7 @@ di ()
 
 alias flashcards="cd ~/sc/fl; ./main.lisp"
 alias fl=flashcards
-alias lang="surf https://www.dw.com/de/deutsch-lernen/nachrichten/s-8030"
+alias lang="epiphany https://www.dw.com/de/deutsch-lernen/nachrichten/s-8030"
 
 # Google searches
 
@@ -135,7 +136,7 @@ nicename ()
 			'ABCDEFGHIJKLMNOPQRSTUVWXYZ +%_#()/,:;?&' \
 			"abcdefghijklmnopqrstuvwxyz-");
 		mv -n "$i" "$new"
-		if [ $i != $new ]; then
+		if [ "$i" != $new ]; then
 			echo "$i -> $new"
 		fi
 		done
@@ -156,6 +157,7 @@ alias gc="git checkout"
 alias gcb="git checkout -b"
 alias gmg="git merge"
 alias gcm="git commit -am"
+alias gca="git commit -a"
 alias gdf="git diff"
 alias gap="git apply"
 alias gpu="echo 23f5049edcb7d748326a10a8be6b87d32d5b8178; git push -u origin master"
@@ -181,16 +183,17 @@ alias tp="template"
 wgc ()
 {
 	for i in "$@"; do
-		if [ $i = $1 ]; then
-			continue
+		if [ $i != $1 ]; then
+			wordgrinder --convert "$i" "${i%.*}.$1"
 		fi
-		wordgrinder --convert "$i" "${i%.*}.$1"
 	done
 }
 
 # GNU ls
-alias ls="ls -F --color=auto"
-alias cl="clear && echo 'ls:' && ls"
+alias d='dir'
+alias h='ls'
+alias ls="ls -F"
+alias cl="clear && echo 'ls' && ls"
 alias ll="ls -l"
 alias la="ls -A"
 alias l="ls -v"
@@ -255,6 +258,7 @@ o ()
 		txt|py|c|h|md) a=nvi;;
 		tex) a=vim;;
 		odt|ods|odp) a=libreoffice;;
+		ff) sent <(echo "@$1"); return;;
 		*) a=mimeopen;;
 	esac
 	$a $1
@@ -291,3 +295,33 @@ isha ()
 }
 
 alias gop="XDG_CURRENT_DESKTOP=GNOME"
+
+pomodoro ()
+{
+	while true; do
+		timer $1;
+		timer 5;
+	done
+}
+
+
+alias dot='ls .[a-zA-Z0-9_]*'
+alias news="xterm -g 80x45 -e trn -e -S1 -N &"
+psgrep()
+{
+	ps -aux | grep $1 | grep -v grep
+}
+
+#
+# This is a little like `zap' from Kernighan and Pike
+#
+
+zap()
+{
+	local pid
+
+	pid=$(ps -ax | grep $1 | grep -v grep | awk '{ print $1 }')
+	echo -n "killing $1 (process $pid)..."
+	kill -9 $pid
+	echo "slaughtered."
+}
