@@ -1,4 +1,4 @@
-.so /home/syed/.local/etc/groff.ms
+.so /home/syed/.local/etc/macros.ms
 .TL
 <++>
 .AU

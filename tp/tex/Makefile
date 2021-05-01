@@ -6,7 +6,7 @@ ps: main.tex
 	dvips main
 
 view: main.pdf
-	zathura main.pdf
+	xdg-open main.pdf
 
 loop:
 	echo main.tex | entr -s "make &"
