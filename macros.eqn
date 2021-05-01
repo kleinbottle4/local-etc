@@ -1,0 +1,37 @@
+.EQ " "
+delim $$
+define (( "left ("
+define )) "right )"
+define [[ "left ["
+define ]] "right ]"
+define `` 'left ""'
+define ab "above"
+define / "over"
+define ov "over"
+define fr "from"
+define pa "partial"
+define -inf "{- inf}"
+define lc '"\fR{\fP"'
+define rc '"\fR}\fP"'
+define Fourier '"\s+4\f[ZCMI]F\fP\s0"'
+define Laplace '"\s+4\f[ZCMI]L\fP\s0"'
+define Comp '"\s+4\f[ZCMI]C\fP\s0"'
+define l| "left |"
+define r| "right |"
+define prime "\(aa"
+define ** "sup"
+define # "sup"
+define _ "sub"
+define prop "\(pt"
+define iv "i vec"
+define jv "j vec"
+define kv "k vec"
+define perp "\(pp"
+define eval '~"\s+8\fR|\fP\s0"'
+define & "lineup"
+define &= "lineup ="
+define %= "mark ="
+define csc '{type "operator" roman "csc"}'
+define cot '{type "operator" roman "cot"}'
+define sec '{type "operator" roman "sec"}'
+.EN
