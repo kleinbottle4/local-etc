@@ -1,9 +1,0 @@
-# ~/.lesskey
-
-h forw-line
-t back-line
-H forw-line-force
-T back-line-force
-d help
-j repeat-search
-J reverse-search
